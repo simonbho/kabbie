@@ -7,21 +7,24 @@
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.1.0/yeti/bootstrap.min.css">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 
-  <style>
-    /* Only necessary if you are using navbar-fixed-top */
-    body {
-      padding-top: 50px;
-    }
-  </style>
-
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* Only necessary if you are using navbar-fixed-top */
+    body {
+      padding-top: 80px;
+          }
+    .navbar {background-color: #622a7d; padding-left: 20px; padding-right: 20px}
+  </style>
+
 </head>
+
+
 <body>
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -37,9 +40,20 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><a href="#">login</a></li>
-      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+      <% user = User.find_by(:id => session[:user_id]) %>
+      <% if user.present? %>
+        <p class="navbar-text">Hi, <%= user.first_name %>!</p>
+      <% end %>
+        <% if user.present? %>
+          <li><a href="/users/<%= user.id %>/show">My Profile</a></li>
+          <li><a href="/logout">Sign Out</a></li>
+        <% else %>
+          <li><a href="/users/new">Sign Up</a></li>
+          <li><a href="/login">Sign In</a></li>
+        <% end %>
+
     </div><!-- /.navbar-collapse -->
   </nav>
 

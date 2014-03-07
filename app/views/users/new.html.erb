@@ -1,0 +1,35 @@
+<div class="page-header">
+  <h1>Sign Up</h1>
+</div>
+
+<form action="/users/create" class="col-md-4">
+
+  <div class="form-group">
+    <label class="control-label">Enter your First Name:</label>
+    <input name="first_name" type="text" class="form-control input-md" placeholder="Your first name...">
+  </div>
+
+<div class="form-group">
+    <label class="control-label">Enter your Last Name:</label>
+    <input name="last_name" type="text" class="form-control input-md" placeholder="Your last name...">
+  </div>
+
+<div class="form-group">
+    <label class="control-label">Email:</label>
+    <input name="email" type="text" class="form-control input-md" placeholder="Your email...">
+  </div>
+
+<div class="form-group">
+    <label class="control-label">Phone:</label>
+    <input name="phone" type="text" class="form-control input-md" placeholder="Your phone number...">
+  </div>
+
+  <div class="form-group">
+    <label>Enter a Password:</label>
+    <input name="password" type="text" class="form-control input-md" placeholder="Choose a password that you'll remember">
+  </div>
+
+  <button type="submit" class="btn btn-success btn-md">Sign Me Up!</button>
+  or
+  <%= link_to "Go Back", "/" %>
+</form>

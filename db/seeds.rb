@@ -1,7 +1,120 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+User.destroy_all
+      user_list = [ { :first_name => "Simon",
+                      :last_name => "Ho",
+                      :email => 'sho2015@kellogg.northwestern.edu',
+                      :phone => 3125552121,
+                      :password => 'ilovecodes',
+                    },
+                    { :first_name => "Jamie",
+                      :last_name => "Ward",
+                      :email => 'jward2015@kellogg.northwestern.edu',
+                      :phone => 8475551234,
+                      :password => 'iloveruby',
+                    },
+                    { :first_name => "Jeff",
+                      :last_name => "Cohen",
+                      :email => 'j-cohen@kellogg.northwestern.edu',
+                      :phone => 3123849292,
+                      :password => 'hockey',
+                    },
+                    { :first_name => "Brian",
+                      :last_name => "Eng",
+                      :email => 'b-eng@kellogg.northwestern.edu',
+                      :phone => 8475559876,
+                      :password => 'baseball',
+                    },
+                  ]
+
+user_list.each do |user_info|
+  u = User.new
+  u.first_name = user_info[:first_name]
+  u.last_name = user_info[:last_name]
+  u.email = user_info[:email]
+  u.phone = user_info[:phone]
+  u.password = user_info[:password]
+  u.save
+end
+
+puts "There are now #{User.count} users in the database."
+
+Location.destroy_all
+["Evanston", "Chicago", "O'Hare", "Midway"].each do |location_name|
+  l = Location.new
+  l.name = location_name
+  l.save
+end
+
+puts "There are now #{Location.count} locations in the database."
+
+Ride.destroy_all
+      ride_list = [ { :origin => Location.first.name,
+                      :destination => Location.last.name,
+                      :depart_date => "05/15/2014",
+                      :depart_time_1 => "11:00 PM",
+                      :depart_time_2 => "11:30 PM",
+                    },
+                    { :origin => Location.first.name,
+                      :destination => Location.last.name,
+                      :depart_date => "05/25/2014",
+                      :depart_time_1 => "10:00 AM",
+                      :depart_time_2 => "12:00 PM",
+                    },
+                    { :origin => Location.last.name,
+                      :destination => Location.first.name,
+                      :depart_date => "05/10/2014",
+                      :depart_time_1 => "09:00 AM",
+                      :depart_time_2 => "10:00 AM",
+                    },
+                    { :origin => Location.last.name,
+                      :destination => Location.first.name,
+                      :depart_date => "06/01/2014",
+                      :depart_time_1 => "08:00 PM",
+                      :depart_time_2 => "09:00 PM",
+                    },
+                  ]
+
+ride_list.each do |ride_info|
+  r = Ride.new
+  r.origin = ride_info[:origin]
+  r.destination = ride_info[:destination]
+  r.depart_date = ride_info[:depart_date]
+  r.depart_time_1 = ride_info[:depart_time_1]
+  r.depart_time_2 = ride_info[:depart_time_2]
+  r.save
+end
+
+puts "There are now #{Ride.count} rides in the database."
+
+Match.destroy_all
+      match_list = [{:user_id => User.first.id,
+                      :ride_id => Ride[1].id,
+                    },
+                    {:user_id => User.first.id,
+                      :ride_id => Ride[2].id,
+                    },
+                    {:user_id => User[2].id,
+                      :ride_id => Ride[1].id,
+                    },
+                    {:user_id => User[2].id,
+                      :ride_id => Ride[3].id,
+                    },
+                    {:user_id => User[3].id,
+                      :ride_id => Ride[2].id,
+                    },
+                    {:user_id => User[3].id,
+                      :ride_id => Ride[4].id,
+                    },
+                    {:user_id => User.last.id,
+                      :ride_id => Ride[3].id,
+                    },
+                    {:user_id => User.last.id,
+                      :ride_id => Ride[4].id,
+                    },
+                  ]
+
+match_list.each do |match_info|
+  m = Match.new
+  m.user_id = match_info[:user_id]
+  m.ride_id = match_info[:ride_id]
+  m.save
+end
