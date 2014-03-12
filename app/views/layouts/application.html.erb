@@ -48,6 +48,7 @@
         <p class="navbar-text">Hi  <%= user.first_name %>!</p>
       <% end %>
         <% if user.present? %>
+          <li><a href="/users/myrides">My Rides</a></li>
           <li><a href="/users/<%= user.id %>/show">My Profile</a></li>
           <li><a href="/logout">Sign Out</a></li>
         <% else %>

@@ -1,7 +1,6 @@
 Kabbie::Application.routes.draw do
 
-root 'rides#search'
-
+root 'rides#index'
 
 get "/login" => 'sessions#new'
 get "/logout" => 'sessions#destroy'
@@ -30,9 +29,10 @@ get "/users/myrides" => 'users#myrides'
 #CREATE
 get 'rides/new' => 'rides#new'
 get 'rides/create' => 'rides#create'
+get 'rides/join' => 'rides#join'
 
 # READ
-get "/rides" => 'rides#index'
+get "/rides" => 'rides#viewrides'
 get "/rides/:ride_id/show" => "rides#show"
 
 # UPDATE

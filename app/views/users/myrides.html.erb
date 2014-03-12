@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 
-<h3> Showing all rides for Simon</h3>
+<% user = User.find_by(:id => session[:user_id]) %>
+
+<h3> Showing all rides for <%= user.first_name %></h3>
+
 
 <table class="table table-hover">
     <thead>
@@ -9,24 +12,21 @@
             <th>Date</th>
             <th>From</th>
             <th>To</th>
-            <th>Departure Window</th>
+            <th>Departure By</th>
         </tr>
     </thead>
     <tbody>
+
+    <% @myrides.each do |ride|%>
         <tr>
-            <td>03/15/2014</td>
-            <td>Evanston</td>
-            <td>O'Hare</td>
-            <td>8:00am to 10:30am</td>
+            <td><%=ride.depart_date%></td>
+            <td><%=ride.origin%></td>
+            <td><%=ride.destination%></td>
+            <td><%=ride.depart_time_2%></td>
             <td> <button>Delete Ride</button> </td>
         </tr>
-        <tr>
-            <td>03/20/2014</td>
-            <td>O'Hare</td>
-            <td>Evanston</td>
-            <td>8:00am to 10:30am</td>
-            <td> <button>Delete Ride</button> </td>
-        </tr>
+    <%end%>
+
     </tbody>
 </table>
 

@@ -52,28 +52,35 @@ Ride.destroy_all
                       :depart_date => "2014-05-15",
                       :depart_time_1 => "11:00 PM",
                       :depart_time_2 => "11:30 PM",
-                      :comments => "need to leave by 11:30pm at the absolute latest"
+                      :comments => "need to leave by 11:30pm at the absolute latest",
+                    },
+                    { :origin => Location.first.name,
+                      :destination => Location.last.name,
+                      :depart_date => "2014-05-15",
+                      :depart_time_1 => "10:00 PM",
+                      :depart_time_2 => "10:30 PM",
+                      :comments => "let's take Uber",
                     },
                     { :origin => Location.first.name,
                       :destination => Location.last.name,
                       :depart_date => "2014-05-25",
                       :depart_time_1 => "10:00 AM",
                       :depart_time_2 => "12:00 PM",
-                      :comments => "flexible but would like to leave closer to 10:00am"
+                      :comments => "flexible but would like to leave closer to 10:00am",
                     },
                     { :origin => Location.last.name,
                       :destination => Location.first.name,
                       :depart_date => "2014-05-10",
                       :depart_time_1 => "09:00 AM",
                       :depart_time_2 => "10:00 AM",
-                      :comments => "heading to an interview"
+                      :comments => "heading to an interview",
                     },
                     { :origin => Location.last.name,
                       :destination => Location.first.name,
                       :depart_date => "2014-06-01",
                       :depart_time_1 => "08:00 PM",
                       :depart_time_2 => "09:00 PM",
-                      :comments => "need to wait for bags, meet up at baggage carousel"
+                      :comments => "need to wait for bags, meet up at baggage carousel",
                     },
                   ]
 
@@ -91,30 +98,39 @@ puts "There are now #{Ride.count} rides in the database."
 
 Match.destroy_all
       match_list = [{:user_id => User.first.id,
-                      :ride_id => Ride[1].id,
+                      :ride_id => Ride.first.id,
                     },
                     {:user_id => User.first.id,
-                      :ride_id => Ride[2].id,
-                    },
-                    {:user_id => User[2].id,
-                      :ride_id => Ride[1].id,
-                    },
-                    {:user_id => User[2].id,
-                      :ride_id => Ride[3].id,
-                    },
-                    {:user_id => User[3].id,
-                      :ride_id => Ride[2].id,
-                    },
-                    {:user_id => User[3].id,
-                      :ride_id => Ride[4].id,
+                      :ride_id => Ride.last.id,
                     },
                     {:user_id => User.last.id,
-                      :ride_id => Ride[3].id,
+                      :ride_id => Ride.last.id,
                     },
-                    {:user_id => User.last.id,
-                      :ride_id => Ride[4].id,
-                    },
+
+                    # {:user_id => {User.where(:email => "sho2015@kellogg.northwestern.edu").id},
+                    #   :ride_id => {Ride.where(:depart_time_2 => "12:00 PM").id},
+                    # },
+                    # {:user_id => {User.where(:email => "jward2015@kellogg.northwestern.edu").id},
+                    #   :ride_id => {Ride.where(:depart_time_2 => "10:30 PM").id},
+                    # },
+                    # {:user_id => {User.where(:email => "jward2015@kellogg.northwestern.edu").id},
+                    #   :ride_id => {Ride.where(:depart_time_2 => "10:00 AM").id},
+                    # },
+                    # {:user_id => {User.where(:email => "j-cohen@kellogg.northwestern.edu").id},
+                    #   :ride_id => {Ride.where(:depart_time_2 => "10:30 PM").id},
+                    # },
+                    # {:user_id => {User.where(:email => "j-cohen@kellogg.northwestern.edu").id},
+                    #   :ride_id => {Ride.where(:depart_time_2 => "10:00 AM").id},
+                    # },
+                    # {:user_id => {User.where(:email => "b-eng@kellogg.northwestern.edu").id},
+                    #   :ride_id => {Ride.where(:depart_time_2 => "12:00 PM").id},
+                    # },
+                    # {:user_id => {User.where(:email => "b-eng@kellogg.northwestern.edu").id},
+                    #   :ride_id => {Ride.where(:depart_time_2 => "10:00 AM").id},
+                    # },
                   ]
+
+
 
 match_list.each do |match_info|
   m = Match.new
@@ -122,3 +138,5 @@ match_list.each do |match_info|
   m.ride_id = match_info[:ride_id]
   m.save
 end
+
+puts "There are now #{Match.count} matches in the database."

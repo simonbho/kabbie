@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%if @filter_date=="NO RIDES"%>
+
+<h4>Sorry, no rides available based on your criteria.</h4>
+<br>
+<%= link_to "Create a New Ride", "/rides/new", :class => "btn btn-default btn-md" %>
+
+<%else%>
+<h3> Displaying <%=@filter_rides.count%> ride(s) from <%=@filter_rides.first.origin%> to <%=@filter_rides.first.destination%> on <%=@filter_date%> </h3>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Depart By</th>
+            <th>Number of Open Seats</th>
+            <th>Comments</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @filter_rides.each do |ride|%>
+        <tr>
+            <td><%= ride.depart_time_2.strftime("%l:%M %p") %> </td>
+
+
+            <td><%=Match.where(:ride_id => ride.id).count%> of 4 seats</td>
+
+
+            <td><%= ride.comments %> </td>
+            <td> <form action="/rides/join" role="form">
+                    <input type="hidden" name="ride_id" id="ride_id" value="<%= ride.id %>" >
+                    <button type="submit" class="btn btn-primary btn-sm">Join Ride</button>
+                    </form>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<br>
+<h4>Don't see something that works for you?</h4>
+<%= link_to "Create a New Ride", "/rides/new", :class => "btn btn-default btn-md" %>
+<% end %>

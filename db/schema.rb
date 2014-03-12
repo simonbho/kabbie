@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20140306225317) do
     t.date     "depart_date"
     t.time     "depart_time_1"
     t.time     "depart_time_2"
-    t.string   "comments"
+    t.text     "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

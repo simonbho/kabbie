@@ -2,7 +2,22 @@ class UsersController < ApplicationController
 
 
 def myrides
+
+match_filter = Match.find_by(:user_id => session[:user_id])
+@myrides = Ride.all.where(:id => match_filter.ride_id)
+
 end
+
+def deleteride
+  ride = Ride.find_by(:id => params[:ride_id])
+  ride.destroy
+
+  #need to delete matches
+
+end
+
+
+
 
 def show
   @user = User.find_by(:id => params[:user_id])
