@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<h3> Displaying Rides from X to Y on Z date </h3>
+<%if @filter_date=="NO RIDES"%>
+
+<h4>Sorry, no rides available based on your criteria.</h4>
+<br>
+<%= link_to "Create a New Ride", "/rides/new", :class => "btn btn-default btn-md" %>
+
+<%else%>
+<h3> Displaying <%=@filter_rides.count%> ride(s) from <%=@filter_rides.first.origin%> to <%=@filter_rides.first.destination%> on <%=@filter_date%> </h3>
 
 <table class="table table-hover">
     <thead>
         <tr>
-            <th>Departure Window</th>
+            <th>Depart By</th>
             <th>Number of Open Seats</th>
+            <th>Comments</th>
         </tr>
     </thead>
     <tbody>
+        <% @filter_rides.each do |ride|%>
         <tr>
-            <td>8:00am to 10:30am</td>
+            <td><%= ride.depart_time_2.strftime("%l:%M %p") %> </td>
             <td>2 of 4 seats</td>
+            <td><%= ride.comments %> </td>
             <td> <button>Join Ride</button> </td>
         </tr>
-        <tr>
-            <td>8:00am to 10:30am</td>
-            <td>2 of 4 seats</td>
-            <td> <button>Join Ride</button> </td>
-        </tr>
+        <% end %>
     </tbody>
 </table>
 
+<br>
 <h4>Don't see something that works for you?</h4>
-<button type="submit" class="btn btn-default">Create a New Ride</button>
+<%= link_to "Create a New Ride", "/rides/new", :class => "btn btn-default btn-md" %>
+<% end %>

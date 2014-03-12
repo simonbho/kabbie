@@ -49,27 +49,31 @@ puts "There are now #{Location.count} locations in the database."
 Ride.destroy_all
       ride_list = [ { :origin => Location.first.name,
                       :destination => Location.last.name,
-                      :depart_date => "05/15/2014",
+                      :depart_date => "2014-05-15",
                       :depart_time_1 => "11:00 PM",
                       :depart_time_2 => "11:30 PM",
+                      :comments => "need to leave by 11:30pm at the absolute latest"
                     },
                     { :origin => Location.first.name,
                       :destination => Location.last.name,
-                      :depart_date => "05/25/2014",
+                      :depart_date => "2014-05-25",
                       :depart_time_1 => "10:00 AM",
                       :depart_time_2 => "12:00 PM",
+                      :comments => "flexible but would like to leave closer to 10:00am"
                     },
                     { :origin => Location.last.name,
                       :destination => Location.first.name,
-                      :depart_date => "05/10/2014",
+                      :depart_date => "2014-05-10",
                       :depart_time_1 => "09:00 AM",
                       :depart_time_2 => "10:00 AM",
+                      :comments => "heading to an interview"
                     },
                     { :origin => Location.last.name,
                       :destination => Location.first.name,
-                      :depart_date => "06/01/2014",
+                      :depart_date => "2014-06-01",
                       :depart_time_1 => "08:00 PM",
                       :depart_time_2 => "09:00 PM",
+                      :comments => "need to wait for bags, meet up at baggage carousel"
                     },
                   ]
 

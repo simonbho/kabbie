@@ -6,6 +6,7 @@ class CreateRides < ActiveRecord::Migration
       t.date      :depart_date
       t.time      :depart_time_1
       t.time      :depart_time_2
+      t.string    :comments
       t.timestamps
     end
   end

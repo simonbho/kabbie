@@ -2,14 +2,26 @@ Kabbie::Application.routes.draw do
 
 root 'rides#search'
 
-#USER URLS
+
 get "/login" => 'sessions#new'
 get "/logout" => 'sessions#destroy'
 get "/authenticate" => 'sessions#create'
 
+#USER URLS
+#USER - CREATE
 get "/users/new" => 'users#new'
 get "/users/create" => 'users#create'
+
+#USER - READ
 get "/users/:user_id/show" => 'users#show'
+
+#USER - UPDATE
+get "/users/:user_id/edit" => 'users#edit'
+get "/users/:user_id/update" => 'users#update'
+
+#USER - DELETE
+get "/users/:user_id/destroy" => 'users#destroy'
+
 # get "/users/:user_id/myrides" => 'users#myrides'
 get "/users/myrides" => 'users#myrides'
 

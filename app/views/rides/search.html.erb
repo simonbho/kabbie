@@ -11,40 +11,93 @@
   <br>
 </div>
 
+<form action="/rides" class="form-horizontal" role="form">
 
-
-  <div class="col-sm-4">
-        <div class="form-group">
-        <input type="text" class="form-control" placeholder="From">
-        <input type="text" class="form-control" placeholder="To">
-      </div>
-  </div>
-  <div class="col-sm-8">
-      <div class="form-group">
-        <div class="btn-group">
-          <button type="date" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-          <span class="glyphicon glyphicon-calendar"></span>
-          Date </button>
-
-          <input type="date" class="btn btn-default dropdown-toggle"/>
-
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-          <span class="glyphicon glyphicon-time"></span>
-          Time </button>
+    <div class="form-group">
+      <label for="origin" required class="col-sm-2 control-label">Origin</label>
+        <div class="col-sm-10">
+          <select id="origin">
+            <option value="Evanston">Evanston</option>
+            <option value="Chicago">Chicago</option>
+            <option value="O'Hare">O'Hare</option>
+            <option value="Midway">Midway</option>
+          </select>
         </div>
-
-        <div class="btn-group">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-          1 rider <span class="caret"></span>
-        </button>
       </div>
-      <button type="submit" class="btn btn-default">Go</button>
+
+    <div class="form-group">
+      <label for="destination" required class="col-sm-2 control-label">Destination</label>
+        <div class="col-sm-10">
+          <select id="destination">
+            <option value="Evanston">Evanston</option>
+            <option value="Chicago">Chicago</option>
+            <option value="O'Hare">O'Hare</option>
+            <option value="Midway">Midway</option>
+          </select>
+        </div>
       </div>
-  </div>
-</div>
+
+    <div class="form-group">
+      <label for="date" required class="col-sm-2 control-label">Date</label>
+      <div class="col-sm-10">
+        <input type="date" class="button" name="date" id="date" placeholder="">
+      </div>
+    </div>
+
+    <div class="form-group">
+    <label class="col-sm-2"></label>
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+
+  </form>
 
 </div>
-
+</div>
 
 </body>
 </html>
+
+
+<!-- Taking out departure window & replacing with depart time only on the initial Search page-->
+<!--     <div class="form-group">
+      <label for="departure 1" class="col-sm-2 control-label">Departure Window</label>
+      <div class="col-sm-10">
+        <input type="time" class="btn btn-default dropdown-toggle" id="depart_time_1" placeholder="08:00 AM">
+        <input type="time" class="btn btn-default dropdown-toggle" id="depart_time_2" placeholder="">
+      </div>
+    </div> -->
+
+<!-- Another option for time filter in initial search -->
+<!--     <div class="form-group">
+      <label for="depart_time_1" class="col-sm-2 control-label">Departure Time</label>
+        <div class="col-sm-10">
+          <select id="depart_time_1">
+            <option value="0">Midnight</option>
+            <option value="1">1:00 am</option>
+            <option value="2">2:00 am</option>
+            <option value="3">3:00 am</option>
+            <option value="4">4:00 am</option>
+            <option value="5">5:00 am</option>
+            <option value="6">6:00 am</option>
+            <option value="7">7:00 am</option>
+            <option value="8">8:00 am</option>
+            <option value="9">9:00 am</option>
+            <option value="10">10:00 am</option>
+            <option value="11">11:00 am</option>
+            <option value="12">Noon</option>
+            <option value="13">1:00 pm</option>
+            <option value="14">2:00 pm</option>
+            <option value="15">3:00 pm</option>
+            <option value="16">4:00 pm</option>
+            <option value="17">5:00 pm</option>
+            <option value="18">6:00 pm</option>
+            <option value="19">7:00 pm</option>
+            <option value="20">8:00 pm</option>
+            <option value="21">9:00 pm</option>
+            <option value="22">10:00 pm</option>
+            <option value="23">11:00 pm</option>
+          </select>
+        </div>
+      </div> -->

@@ -1,8 +1,11 @@
-h1>My Profile</h1>
+<body>
+<h3>My Profile</h3>
 
-<p>First Name: <%= @user.first_name %></p>
-<p>Last Name: <%= @user.last_name %></p>
-<p>Password: <%= @user.password %></p>
-<p>Email: <%= @user.email %></p>
-<p>Phone: <%= @user.phone %></p>
+<p>First Name: <%= @user.first_name %> </p>
+<p>Last Name: <%= @user.last_name %> </p>
+<p>Password: <%= @user.password %> </p>
+<p>Email: <%= @user.email %> </p>
+<p>Phone: <%= @user.phone %> </p>
 
+<%= link_to "Edit My Profile", "/users/#{@user.id}/edit", :class => "btn btn-default btn-md" %>
+</body>

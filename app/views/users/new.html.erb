@@ -6,30 +6,30 @@
 
   <div class="form-group">
     <label class="control-label">Enter your First Name:</label>
-    <input name="first_name" type="text" class="form-control input-md" placeholder="Your first name...">
+    <input name="first_name" type="text" required class="form-control input-md" placeholder="Your first name...">
   </div>
 
 <div class="form-group">
     <label class="control-label">Enter your Last Name:</label>
-    <input name="last_name" type="text" class="form-control input-md" placeholder="Your last name...">
+    <input name="last_name" type="text" required class="form-control input-md" placeholder="Your last name...">
   </div>
 
 <div class="form-group">
-    <label class="control-label">Email:</label>
-    <input name="email" type="text" class="form-control input-md" placeholder="Your email...">
+    <label class="control-label">Email (used for login):</label>
+    <input name="email" type="email" required class="form-control input-md" placeholder="Your email...">
   </div>
 
 <div class="form-group">
     <label class="control-label">Phone:</label>
-    <input name="phone" type="text" class="form-control input-md" placeholder="Your phone number...">
+    <input name="phone" type="tel" required class="form-control input-md" placeholder="Your phone number...">
   </div>
 
   <div class="form-group">
     <label>Enter a Password:</label>
-    <input name="password" type="text" class="form-control input-md" placeholder="Choose a password that you'll remember">
+    <input name="password" type="password" required class="form-control input-md" placeholder="Choose a password that you'll remember">
   </div>
 
-  <button type="submit" class="btn btn-success btn-md">Sign Me Up!</button>
+  <button type="submit" class="btn btn-primary btn-md">Sign Me Up!</button>
   or
   <%= link_to "Go Back", "/" %>
 </form>
