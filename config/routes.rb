@@ -30,10 +30,11 @@ get "/users/myrides" => 'users#myrides'
 get 'rides/new' => 'rides#new'
 get 'rides/create' => 'rides#create'
 get 'rides/join' => 'rides#join'
+get 'rides/unjoin' => 'rides#unjoin'
 
 # READ
 get "/rides" => 'rides#viewrides'
-get "/rides/:ride_id/show" => "rides#show"
+get "/rides/show" => "rides#show"
 
 # UPDATE
 get "/rides/:ride_id/edit" => "rides#edit"

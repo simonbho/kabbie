@@ -13,17 +13,32 @@
             <th>From</th>
             <th>To</th>
             <th>Departure By</th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
 
-    <% @myrides.each do |ride|%>
+    <% @matches.each do |match|%>
+    <% ride = Ride.find_by(:id => match.ride_id) %>
         <tr>
-            <td><%=ride.depart_date%></td>
-            <td><%=ride.origin%></td>
-            <td><%=ride.destination%></td>
-            <td><%=ride.depart_time_2%></td>
-            <td> <button>Delete Ride</button> </td>
+            <td><%= ride.depart_date %></td>
+            <td><%= ride.origin %></td>
+            <td><%= ride.destination %></td>
+            <td><%= ride.depart_time_2.strftime("%l:%M %p") %></td>
+
+            <td> <form action="/rides/show" role="form">
+                    <input type="hidden" name="ride_id" id="ride_id" value="<%= ride.id %>" >
+                    <button type="submit" class="btn btn-default btn-sm">Details</button>
+                    </form>
+            </td>
+
+            <td> <form action="/rides/unjoin" role="form">
+                    <input type="hidden" name="match_id" id="match_id" value="<%= match.id %>" >
+                    <button type="submit" class="btn btn-primary btn-sm">Delete Ride</button>
+                    </form>
+            </td>
+
         </tr>
     <%end%>
 

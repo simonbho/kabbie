@@ -1,2 +1,42 @@
 <html lang="en">
-puts "hi world show page, placeholder in case we want to see specific ride details"
+
+<h4> Ride details</h4>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Date:</td>
+            <td> <%= @ride_details.first.depart_date.strftime("%A, %m/%d/%Y") %> </td>
+        </tr>
+        <tr>
+            <td>From:</td>
+            <td> <%= @ride_details.first.origin %> </td>
+        </tr>
+        <tr>
+            <td>To:</td>
+            <td> <%= @ride_details.first.destination %> </td>
+        </tr>
+        <tr>
+            <td>Depart By:</td>
+            <td> <%= @ride_details.first.depart_time_2.strftime("%l:%M %p") %> </td>
+        </tr>
+        <tr>
+            <td>Comments:</td>
+            <td> <%= @ride_details.first.comments %> </td>
+        </tr>
+        <tr>
+            <td>Riders:</td>
+            <td>  <% @matchedriders.each do |match|%>
+                  <% user = User.find_by(:id => match.user_id) %>
+                  <p><%=user.first_name %> <%=user.last_name %> (<%=user.email %>) </p>
+                <% end %>
+        </td>
+        </tr>
+    </tbody>
+</table>

@@ -49,7 +49,7 @@ puts "There are now #{Location.count} locations in the database."
 Ride.destroy_all
       ride_list = [ { :origin => Location.first.name,
                       :destination => Location.last.name,
-                      :depart_date => "2014-05-15",
+                      :depart_date => DateTime.new(2014,5,15),
                       :depart_time_1 => "11:00 PM",
                       :depart_time_2 => "11:30 PM",
                       :comments => "need to leave by 11:30pm at the absolute latest",
@@ -91,43 +91,49 @@ ride_list.each do |ride_info|
   r.depart_date = ride_info[:depart_date]
   r.depart_time_1 = ride_info[:depart_time_1]
   r.depart_time_2 = ride_info[:depart_time_2]
+  r.comments = ride_info[:comments]
   r.save
 end
 
 puts "There are now #{Ride.count} rides in the database."
 
 Match.destroy_all
-      match_list = [{:user_id => User.first.id,
-                      :ride_id => Ride.first.id,
+      match_list = [{:user_id => User.find_by(:email => 'sho2015@kellogg.northwestern.edu').id,
+                      :ride_id => Ride.offset(0).first.id,
                     },
-                    {:user_id => User.first.id,
-                      :ride_id => Ride.last.id,
+                    {:user_id => User.find_by(:email => 'jward2015@kellogg.northwestern.edu').id,
+                      :ride_id => Ride.offset(0).first.id,
                     },
-                    {:user_id => User.last.id,
-                      :ride_id => Ride.last.id,
+                    {:user_id => User.find_by(:email => 'j-cohen@kellogg.northwestern.edu').id,
+                      :ride_id => Ride.offset(0).first.id,
                     },
-
-                    # {:user_id => {User.where(:email => "sho2015@kellogg.northwestern.edu").id},
-                    #   :ride_id => {Ride.where(:depart_time_2 => "12:00 PM").id},
-                    # },
-                    # {:user_id => {User.where(:email => "jward2015@kellogg.northwestern.edu").id},
-                    #   :ride_id => {Ride.where(:depart_time_2 => "10:30 PM").id},
-                    # },
-                    # {:user_id => {User.where(:email => "jward2015@kellogg.northwestern.edu").id},
-                    #   :ride_id => {Ride.where(:depart_time_2 => "10:00 AM").id},
-                    # },
-                    # {:user_id => {User.where(:email => "j-cohen@kellogg.northwestern.edu").id},
-                    #   :ride_id => {Ride.where(:depart_time_2 => "10:30 PM").id},
-                    # },
-                    # {:user_id => {User.where(:email => "j-cohen@kellogg.northwestern.edu").id},
-                    #   :ride_id => {Ride.where(:depart_time_2 => "10:00 AM").id},
-                    # },
-                    # {:user_id => {User.where(:email => "b-eng@kellogg.northwestern.edu").id},
-                    #   :ride_id => {Ride.where(:depart_time_2 => "12:00 PM").id},
-                    # },
-                    # {:user_id => {User.where(:email => "b-eng@kellogg.northwestern.edu").id},
-                    #   :ride_id => {Ride.where(:depart_time_2 => "10:00 AM").id},
-                    # },
+                    {:user_id => User.find_by(:email => 'b-eng@kellogg.northwestern.edu').id,
+                      :ride_id => Ride.offset(1).first.id,
+                    },
+                    {:user_id => User.find_by(:email => 'b-eng@kellogg.northwestern.edu').id,
+                      :ride_id => Ride.offset(2).first.id,
+                    },
+                    {:user_id => User.find_by(:email => 'sho2015@kellogg.northwestern.edu').id,
+                      :ride_id => Ride.offset(2).first.id,
+                    },
+                    {:user_id => User.find_by(:email => 'j-cohen@kellogg.northwestern.edu').id,
+                      :ride_id => Ride.offset(3).first.id,
+                    },
+                    {:user_id => User.find_by(:email => 'jward2015@kellogg.northwestern.edu').id,
+                      :ride_id => Ride.offset(3).first.id,
+                    },
+                    {:user_id => User.find_by(:email => 'sho2015@kellogg.northwestern.edu').id,
+                      :ride_id => Ride.offset(4).first.id,
+                    },
+                    {:user_id => User.find_by(:email => 'jward2015@kellogg.northwestern.edu').id,
+                      :ride_id => Ride.offset(4).first.id,
+                    },
+                    {:user_id => User.find_by(:email => 'j-cohen@kellogg.northwestern.edu').id,
+                      :ride_id => Ride.offset(4).first.id,
+                    },
+                    {:user_id => User.find_by(:email => 'b-eng@kellogg.northwestern.edu').id,
+                      :ride_id => Ride.offset(4).first.id,
+                    },
                   ]
 
 

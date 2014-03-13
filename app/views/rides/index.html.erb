@@ -17,10 +17,10 @@
       <label for="origin" required class="col-sm-2 control-label">Origin</label>
         <div class="col-sm-10">
           <select id="origin" name="origin">
-            <option value="Evanston">Evanston</option>
-            <option value="Chicago">Chicago</option>
-            <option value="O'Hare">O'Hare</option>
-            <option value="Midway">Midway</option>
+            <% location = Location.all %>
+            <% location.each do |location| %>
+            <option value="<%=location.name%>"><%=location.name%></option>
+            <% end %>
           </select>
         </div>
       </div>
@@ -29,10 +29,10 @@
       <label for="destination" required class="col-sm-2 control-label">Destination</label>
         <div class="col-sm-10">
           <select id="destination" name="destination">
-            <option value="Evanston">Evanston</option>
-            <option value="Chicago">Chicago</option>
-            <option value="O'Hare">O'Hare</option>
-            <option value="Midway">Midway</option>
+            <% location = Location.all %>
+            <% location.each do |location| %>
+            <option value="<%=location.name%>"><%=location.name%></option>
+            <% end %>
           </select>
         </div>
       </div>

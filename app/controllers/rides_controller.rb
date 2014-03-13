@@ -4,12 +4,11 @@ def index
 end
 
 def viewrides
-
 @filter_rides = Ride.all.where( :depart_date => params[:date])
                         .where(:origin => params[:origin])
                         .where(:destination => params[:destination])
 if !@filter_rides.empty?
-    @filter_date = params[:date]
+    @filter_date = DateTime.parse(params[:date])
     @filter_origin = params[:origin]
     @filter_destination = params[:destination]
     @filter_rides = @filter_rides.order("depart_time_2 asc")
@@ -27,7 +26,7 @@ fdestination = params["destination"]
 fdepart_date = params["date"]
 
 if (forigin != fdestination)
-if (fdepart_date !=nil)
+if (fdepart_date.present?)
   ride = Ride.new
   ride.origin = params["origin"]
   ride.destination = params["destination"]
@@ -58,7 +57,15 @@ def join
   redirect_to root_url, notice: "You have successfully joined a ride"
 end
 
+def unjoin
+  match = Match.find_by(:id => params[:match_id])
+  match.destroy
+  redirect_to '/users/myrides', notice: "You have successfully removed yourself from the ride"
+end
+
 def show
+@ride_details = Ride.where( :id => params[:ride_id])
+@matchedriders = Match.where(:ride_id => params[:ride_id])
 end
 
 end
