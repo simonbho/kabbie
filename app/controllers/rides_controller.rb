@@ -40,7 +40,7 @@ if (fdepart_date.present?)
   match.ride_id = Ride.last.id
   match.save
 
-  redirect_to root_url, notice: "New ride created"
+  redirect_to '/users/myrides', notice: "New ride created"
 else
   redirect_to '/rides/new', notice: "Date cannot be blank"
 end
